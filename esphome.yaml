@@ -14,5 +14,5 @@ wifi:
 packages:
   setup:
     url: https://github.com/flowrri/esp32-p4-evboard/
-    file: guition-esp32-p4-jc8012p4a1/package.yaml
+    file: package.yaml
     refresh: 1sec
