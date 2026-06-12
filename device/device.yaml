@@ -56,9 +56,9 @@ esp_ldo:
 
 # Backlight
 output:
-  - platform: ledc
+  - id: backlight_output
+    platform: ledc
     pin: GPIO23
-    id: backlight_pwm
 
 light:
   - platform: monochromatic
