@@ -1,7 +1,6 @@
 # Designed for guition-esp32-p4-jc8012p4a1
 esp32:
   board: esp32-p4-evboard
-  cpu_frequency: 360MHz
   flash_size: 16MB
   framework:
     type: esp-idf
