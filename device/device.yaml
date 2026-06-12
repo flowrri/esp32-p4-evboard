@@ -96,7 +96,8 @@ touchscreen:
 
 # Display
 display:
-  - platform: jd9365
+  - platform: mipi_dsi
+    model: JC8012P4A1
     id: my_display
     reset_pin: GPIO27
     show_test_card: false
