@@ -1,10 +1,3 @@
-external_components:
-  - source: github://kvj/esphome@jd9365_gsl3680
-    refresh: 0s
-    components:
-      - gsl3680
-      - jd9365
-
 # Designed for guition-esp32-p4-jc8012p4a1
 esp32:
   variant: ESP32P4
@@ -55,7 +48,9 @@ logger:
 # External components
 external_components:
   - source: github://kvj/esphome@jd9365_gsl3680
-    components: [gsl3680]
+    components:
+      - gsl3680
+      - jd9365
 
 # Power management
 esp_ldo:
