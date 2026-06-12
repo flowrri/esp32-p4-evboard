@@ -6,8 +6,8 @@ substitutions:
 
 # Wifi Setup
 wifi:
-  ssid: "FRITZ!Box 5590 AS"
-  password: "87246475950683897439"
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
 
 # Packages
 packages:
