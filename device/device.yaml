@@ -48,6 +48,7 @@ logger:
 external_components:
   - source: github://kvj/esphome@jd9365_gsl3680
     components: [gsl3680, jd9365]
+    refresh: 0s
 
 # Power management
 esp_ldo:
