@@ -1,6 +1,7 @@
 # Designed for guition-esp32-p4-jc8012p4a1
 esp32:
   variant: ESP32P4
+  cpu_frequency: 360MHz
   flash_size: 16MB
   engineering_sample: true
   framework:
@@ -18,7 +19,7 @@ esphome:
 
 # Secondary ESP32-C6 device for connectivity
 esp32_hosted:
-  variant: esp32c6
+  variant: ESP32C6
   reset_pin: GPIO54
   cmd_pin: GPIO19
   clk_pin: GPIO18
@@ -73,13 +74,11 @@ light:
 
 # I2C
 i2c:
-  - id: i2c_bus_a
+  - id: i2c_bus
     sda: GPIO7
     scl: GPIO8
     scan: true
     frequency: 400kHz
-    sda_pullup_enabled: False
-    scl_pullup_enabled: False
 
 # Touchscreen
 touchscreen:
@@ -102,7 +101,7 @@ touchscreen:
 
 # Display
 display:
-  - platform: mipi_dsi
+  - platform: jd9365
     model: JC8012P4A1
     reset_pin: GPIO27
     update_interval: 17ms
