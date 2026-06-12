@@ -62,9 +62,12 @@ output:
 
 light:
   - platform: monochromatic
-    id: lcd_backlight
-    output: backlight_pwm
+    output: backlight_output
+    name: LCD Backlight
+    id: display_backlight
     restore_mode: ALWAYS_ON
+    default_transition_length: 0s
+    gamma_correct: 1.0
 
 # I2C
 i2c:
