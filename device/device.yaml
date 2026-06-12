@@ -27,7 +27,7 @@ esp32_hosted:
 # Video memory
 psram:
   mode: hex
-  speed: 200MHz
+  speed: 100MHz
 
 # Over the Air Updates
 ota:
