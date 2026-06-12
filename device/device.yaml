@@ -99,7 +99,3 @@ display:
     id: my_display
     reset_pin: GPIO27
     show_test_card: false
-    color_order: RGB
-    dimensions:
-      width: 800
-      height: 1280
