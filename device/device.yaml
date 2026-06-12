@@ -1,15 +1,11 @@
 # Designed for guition-esp32-p4-jc8012p4a1
 esp32:
   board: esp32-p4-evboard
-  variant: ESP32P4
   cpu_frequency: 360MHz
   flash_size: 16MB
-  engineering_sample: true
   framework:
     type: esp-idf
-    advanced:
-      enable_idf_experimental_features: true
-
+      
 # Esphome
 esphome:
   name: ${name}
@@ -20,7 +16,7 @@ esphome:
 
 # Secondary ESP32-C6 device for connectivity
 esp32_hosted:
-  variant: esp32c6
+  variant: ESP32C6
   reset_pin: GPIO54
   cmd_pin: GPIO19
   clk_pin: GPIO18
@@ -51,29 +47,24 @@ logger:
 # External components
 external_components:
   - source: github://kvj/esphome@jd9365_gsl3680
-    components: [gsl3680]
+    components: [gsl3680, jd9365]
 
 # Power management
 esp_ldo:
   - channel: 3
-    id: dsi_phy_enable
     voltage: 2.5V
-    adjustable: True
 
 # Backlight
 output:
-  - id: backlight_output
-    platform: ledc
+  - platform: ledc
     pin: GPIO23
+    id: backlight_pwm
 
 light:
   - platform: monochromatic
-    output: backlight_output
-    name: LCD Backlight
-    id: display_backlight
+    id: lcd_backlight
+    output: backlight_pwm
     restore_mode: ALWAYS_ON
-    default_transition_length: 0s
-    gamma_correct: 1.0
 
 # I2C
 i2c:
@@ -82,8 +73,6 @@ i2c:
     scl: GPIO8
     scan: true
     frequency: 400kHz
-    sda_pullup_enabled: False
-    scl_pullup_enabled: False
 
 # Touchscreen
 touchscreen:
@@ -106,12 +95,10 @@ touchscreen:
 
 # Display
 display:
-  - platform: mipi_dsi
-    model: JC8012P4A1
-    reset_pin: GPIO27
-    update_interval: 17ms
+  - platform: jd9365
     id: my_display
-    auto_clear_enabled: false
+    reset_pin: GPIO27
+    show_test_card: false
     color_order: RGB
     dimensions:
       width: 800
