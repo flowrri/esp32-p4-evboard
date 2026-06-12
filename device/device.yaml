@@ -17,23 +17,23 @@ esphome:
 # Secondary ESP32-C6 device for connectivity
 esp32_hosted:
   variant: ESP32C6
-  reset_pin: GPIO54
-  cmd_pin: GPIO19
-  clk_pin: GPIO18
-  d0_pin: GPIO14
-  d1_pin: GPIO15
-  d2_pin: GPIO16
-  d3_pin: GPIO17
+  reset_pin: 54
+  cmd_pin: 19
+  clk_pin: 18
+  d0_pin: 14
+  d1_pin: 15
+  d2_pin: 16
+  d3_pin: 17
   active_high: true
 
 # Video memory
 psram:
-  mode: hex
-  speed: 100MHz
+  speed: 200MHz
 
 # Over the Air Updates
 ota:
   platform: esphome
+  password: "e822e513b4faf55e0152ef676d571693"
 
 # Enable Home Assistant API
 api:
@@ -42,7 +42,12 @@ api:
 
 # Enable logging
 logger:
-  level: VERY_VERBOSE
+  hardware_uart: USB_SERIAL_JTAG
+  level: DEBUG
+  logs:
+    lvgl: DEBUG
+    display: DEBUG
+    app: DEBUG
 
 # External components
 external_components:
@@ -60,6 +65,9 @@ output:
   - id: backlight_output
     platform: ledc
     pin: GPIO23
+    frequency: 100Hz
+    min_power: 0.03
+    zero_means_zero: true
 
 light:
   - platform: monochromatic
@@ -102,5 +110,4 @@ display:
   - platform: mipi_dsi
     model: JC8012P4A1
     id: my_display
-    reset_pin: GPIO27
-    show_test_card: false
+    rotation: 0
